@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp01
+﻿namespace WinFormsApp01
 {
     partial class QLSinhVien
     {
@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            menuStrip1 = new MenuStrip();
-            quảnLýSinhViênToolStripMenuItem = new ToolStripMenuItem();
-            quảnLýToolStripMenuItem = new ToolStripMenuItem();
-            đăngXuấtToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip2 = new MenuStrip();
             groupBox1 = new GroupBox();
             dateTimePicker1 = new DateTimePicker();
             comboBox2 = new ComboBox();
@@ -62,50 +57,10 @@
             button3 = new Button();
             button4 = new Button();
             label7 = new Label();
-            menuStrip1.SuspendLayout();
+            colorDialog1 = new ColorDialog();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { quảnLýSinhViênToolStripMenuItem, quảnLýToolStripMenuItem, đăngXuấtToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 24);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(8, 3, 0, 3);
-            menuStrip1.Size = new Size(1599, 35);
-            menuStrip1.TabIndex = 0;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // quảnLýSinhViênToolStripMenuItem
-            // 
-            quảnLýSinhViênToolStripMenuItem.Name = "quảnLýSinhViênToolStripMenuItem";
-            quảnLýSinhViênToolStripMenuItem.Size = new Size(175, 29);
-            quảnLýSinhViênToolStripMenuItem.Text = "Quản Lý Sinh Viên ";
-            // 
-            // quảnLýToolStripMenuItem
-            // 
-            quảnLýToolStripMenuItem.Name = "quảnLýToolStripMenuItem";
-            quảnLýToolStripMenuItem.Size = new Size(169, 29);
-            quảnLýToolStripMenuItem.Text = "Quản Lý Lớp Học ";
-            // 
-            // đăngXuấtToolStripMenuItem
-            // 
-            đăngXuấtToolStripMenuItem.ForeColor = Color.Crimson;
-            đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            đăngXuấtToolStripMenuItem.Size = new Size(112, 29);
-            đăngXuấtToolStripMenuItem.Text = "Đăng Xuất";
-            // 
-            // menuStrip2
-            // 
-            menuStrip2.ImageScalingSize = new Size(20, 20);
-            menuStrip2.Location = new Point(0, 0);
-            menuStrip2.Name = "menuStrip2";
-            menuStrip2.Padding = new Padding(8, 3, 0, 3);
-            menuStrip2.Size = new Size(1599, 24);
-            menuStrip2.TabIndex = 1;
-            menuStrip2.Text = "menuStrip2";
             // 
             // groupBox1
             // 
@@ -428,7 +383,6 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1599, 1050);
             Controls.Add(label7);
             Controls.Add(button4);
             Controls.Add(button3);
@@ -443,15 +397,10 @@
             Controls.Add(btn_update);
             Controls.Add(btn_add);
             Controls.Add(groupBox1);
-            Controls.Add(menuStrip1);
-            Controls.Add(menuStrip2);
-            MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 5, 4, 5);
             Name = "QLSinhVien";
-            Text = "QLSinhVien";
+            Size = new Size(1599, 1050);
             Load += QLSinhVien_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -461,12 +410,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýSinhViênToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem quảnLýToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem đăngXuấtToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label txt_class;
         private System.Windows.Forms.Label txt_gender;
@@ -496,5 +439,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Label label7;
+        private ColorDialog colorDialog1;
     }
 }

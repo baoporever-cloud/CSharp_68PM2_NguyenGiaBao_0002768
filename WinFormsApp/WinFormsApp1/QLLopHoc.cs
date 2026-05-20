@@ -3,20 +3,17 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WinFormsApp01
+namespace WinFormsApp1
 {
-    public partial class QLSinhVien : UserControl
+    public partial class QLLopHoc : UserControl
     {
-        public QLSinhVien()
+        public QLLopHoc()
         {
             InitializeComponent();
         }
-
         private void groupBox1_Enter(object sender, EventArgs e)
         {
 
