@@ -54,12 +54,16 @@
             button4 = new Button();
             button5 = new Button();
             label1 = new Label();
+            label2 = new Label();
+            textBox5 = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(textBox5);
+            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(textBox3);
             groupBox1.Controls.Add(comboBox2);
             groupBox1.Controls.Add(textBox2);
@@ -79,7 +83,7 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(29, 382);
+            textBox3.Location = new Point(26, 445);
             textBox3.Margin = new Padding(4, 5, 4, 5);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(472, 31);
@@ -98,7 +102,7 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(29, 244);
+            textBox2.Location = new Point(29, 318);
             textBox2.Margin = new Padding(4, 5, 4, 5);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(472, 31);
@@ -115,17 +119,18 @@
             // txt_date
             // 
             txt_date.AutoSize = true;
-            txt_date.Location = new Point(26, 325);
+            txt_date.Location = new Point(26, 393);
             txt_date.Margin = new Padding(4, 0, 4, 0);
             txt_date.Name = "txt_date";
             txt_date.Size = new Size(75, 25);
             txt_date.TabIndex = 2;
             txt_date.Text = "Ghi chú:";
+            txt_date.Click += txt_date_Click;
             // 
             // txt_name
             // 
             txt_name.AutoSize = true;
-            txt_name.Location = new Point(26, 197);
+            txt_name.Location = new Point(26, 263);
             txt_name.Margin = new Padding(4, 0, 4, 0);
             txt_name.Name = "txt_name";
             txt_name.Size = new Size(73, 25);
@@ -164,7 +169,6 @@
             btn_search.TabIndex = 12;
             btn_search.Text = "Tìm";
             btn_search.UseVisualStyleBackColor = false;
-            btn_search.Click += btn_search_Click;
             // 
             // label6
             // 
@@ -191,6 +195,7 @@
             btn_refesh.TabIndex = 17;
             btn_refesh.Text = "Làm mới";
             btn_refesh.UseVisualStyleBackColor = false;
+            btn_refesh.Click += btn_refesh_Click;
             // 
             // btn_delete
             // 
@@ -233,6 +238,7 @@
             btn_add.TabIndex = 14;
             btn_add.Text = "Thêm ";
             btn_add.UseVisualStyleBackColor = false;
+            btn_add.Click += btn_add_Click;
             // 
             // button1
             // 
@@ -262,6 +268,7 @@
             dataGridView1.RowTemplate.Height = 24;
             dataGridView1.Size = new Size(657, 755);
             dataGridView1.TabIndex = 19;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Column1
@@ -343,6 +350,24 @@
             label1.TabIndex = 24;
             label1.Text = "Trang 1/1 | 2 bản ghi";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(26, 172);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(72, 25);
+            label2.TabIndex = 10;
+            label2.Text = "Mã lớp:";
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(26, 217);
+            textBox5.Margin = new Padding(4, 5, 4, 5);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(472, 31);
+            textBox5.TabIndex = 11;
+            // 
             // QLLopHoc
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -364,6 +389,7 @@
             Controls.Add(groupBox1);
             Name = "QLLopHoc";
             Size = new Size(1346, 1053);
+            Load += QLSinhVien_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -379,13 +405,7 @@
         private void button2_Click(object sender, EventArgs e)
         {
             throw new NotImplementedException();
-        }
-
-        private void btn_search_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
+        }   
         #endregion
         private GroupBox groupBox1;
         private ComboBox comboBox2;
@@ -413,5 +433,7 @@
         private Button button4;
         private Button button5;
         private Label label1;
+        private TextBox textBox5;
+        private Label label2;
     }
 }

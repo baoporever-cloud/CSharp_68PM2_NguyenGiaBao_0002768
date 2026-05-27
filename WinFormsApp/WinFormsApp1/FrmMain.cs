@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
-using WinFormsApp01;
 
 namespace WinFormsApp1
 {
@@ -24,9 +18,7 @@ namespace WinFormsApp1
         private void LoadUserControl(UserControl uc)
         {
             panelContent.Controls.Clear();
-
             uc.Dock = DockStyle.Fill;
-
             panelContent.Controls.Add(uc);
             uc.BringToFront();
         }
@@ -45,7 +37,6 @@ namespace WinFormsApp1
         {
             Form1 login = new Form1();
             login.Show();
-
             this.Close();
         }
     }

@@ -1,4 +1,5 @@
-﻿namespace WinFormsApp01
+﻿
+namespace WinFormsApp1
 {
     partial class QLSinhVien
     {
@@ -19,7 +20,6 @@
             }
             base.Dispose(disposing);
         }
-
         #region Windows Form Designer generated code
 
         /// <summary>
