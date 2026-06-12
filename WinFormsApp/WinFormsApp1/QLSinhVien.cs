@@ -200,12 +200,6 @@ namespace WinFormsApp1
             DateTime ngaySinh = dateTimePicker1.Value.Date;
             string maLop = comboBox2.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(maSV) || string.IsNullOrWhiteSpace(hoTen))
-            {
-                MessageBox.Show("Vui lòng nhập mã sinh viên và họ tên.");
-                return;
-            }
-
             using SqlConnection conn = new SqlConnection(Db.ConnectionString);
             conn.Open();
 
@@ -224,9 +218,7 @@ namespace WinFormsApp1
             try
             {
                 cmd.ExecuteNonQuery();
-
                 MessageBox.Show("Thêm sinh viên thành công.");
-
                 ClearInput();
                 _currentPage = GetTotalPages();
                 LoadSinhVien(_currentKeyword, _currentPage);
@@ -243,7 +235,7 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Vui lòng chọn sinh viên cần sửa trong danh sách bên phải.");
                 return;
-        }
+            }
 
             if (!ValidateInput()) return;
 
@@ -296,7 +288,7 @@ namespace WinFormsApp1
         }
 
         private void btn_delete_Click(object? sender, EventArgs e)
-            {
+        {
             string maSV = !string.IsNullOrWhiteSpace(_selectedMaSV) ? _selectedMaSV : textBox1.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(maSV))
@@ -310,7 +302,7 @@ namespace WinFormsApp1
                 "Xác nhận xóa",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question
-                );
+            );
 
             if (confirm != DialogResult.Yes) return;
 
@@ -375,7 +367,7 @@ namespace WinFormsApp1
         private void btn_last_Click(object? sender, EventArgs e)
         {
             LoadSinhVien(_currentKeyword, GetTotalPages());
-            }
+        }
 
         private void textBox3_KeyDown(object? sender, KeyEventArgs e)
         {
@@ -383,7 +375,7 @@ namespace WinFormsApp1
             {
                 e.SuppressKeyPress = true;
                 btn_search_Click(sender, e);
-        }
+            }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -401,7 +393,6 @@ namespace WinFormsApp1
             if (rowIndex < 0) return;
 
             DataGridViewRow row = dataGridView1.Rows[rowIndex];
-
             if (row.IsNewRow) return;
 
             _selectedMaSV = row.Cells[0].Value?.ToString() ?? string.Empty;
@@ -425,7 +416,6 @@ namespace WinFormsApp1
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
-
             comboBox1.Text = "Nam";
 
             if (comboBox2.Items.Count > 0)
@@ -438,26 +428,6 @@ namespace WinFormsApp1
             textBox1.Focus();
         }
 
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void groupBox1_Enter(object sender, EventArgs e) { }
         private void label6_Click(object sender, EventArgs e) { }
         private void button3_Click(object sender, EventArgs e) { }
@@ -465,16 +435,5 @@ namespace WinFormsApp1
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) { }
         private void qLSVToolStripMenuItem_Click(object sender, EventArgs e) { }
         private void qLLHToolStripMenuItem_Click(object sender, EventArgs e) { }
-        }
-
-        private void qLSVToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void qLLHToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }   
     }
 }

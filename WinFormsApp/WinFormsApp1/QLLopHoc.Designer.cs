@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            textBox5 = new TextBox();
+            label2 = new Label();
             textBox3 = new TextBox();
             comboBox2 = new ComboBox();
             textBox2 = new TextBox();
@@ -54,8 +56,6 @@
             button4 = new Button();
             button5 = new Button();
             label1 = new Label();
-            label2 = new Label();
-            textBox5 = new TextBox();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -80,6 +80,24 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin lớp học ";
             groupBox1.Enter += groupBox1_Enter;
+            // 
+            // textBox5
+            // 
+            textBox5.Location = new Point(26, 217);
+            textBox5.Margin = new Padding(4, 5, 4, 5);
+            textBox5.Name = "textBox5";
+            textBox5.Size = new Size(472, 31);
+            textBox5.TabIndex = 11;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(26, 172);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(72, 25);
+            label2.TabIndex = 10;
+            label2.Text = "Mã lớp:";
             // 
             // textBox3
             // 
@@ -266,7 +284,7 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Size = new Size(657, 755);
+            dataGridView1.Size = new Size(747, 651);
             dataGridView1.TabIndex = 19;
             dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
@@ -302,7 +320,7 @@
             // button2
             // 
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(605, 951);
+            button2.Location = new Point(643, 836);
             button2.Name = "button2";
             button2.Size = new Size(95, 77);
             button2.TabIndex = 10;
@@ -313,7 +331,7 @@
             // button3
             // 
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(706, 951);
+            button3.Location = new Point(744, 836);
             button3.Name = "button3";
             button3.Size = new Size(95, 77);
             button3.TabIndex = 20;
@@ -323,7 +341,7 @@
             // button4
             // 
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(1056, 951);
+            button4.Location = new Point(1094, 836);
             button4.Name = "button4";
             button4.Size = new Size(95, 77);
             button4.TabIndex = 21;
@@ -333,7 +351,7 @@
             // button5
             // 
             button5.FlatStyle = FlatStyle.Flat;
-            button5.Location = new Point(1157, 951);
+            button5.Location = new Point(1195, 836);
             button5.Name = "button5";
             button5.Size = new Size(95, 77);
             button5.TabIndex = 22;
@@ -343,30 +361,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(840, 977);
+            label1.Location = new Point(878, 862);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(176, 25);
             label1.TabIndex = 24;
             label1.Text = "Trang 1/1 | 2 bản ghi";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(26, 172);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(72, 25);
-            label2.TabIndex = 10;
-            label2.Text = "Mã lớp:";
-            // 
-            // textBox5
-            // 
-            textBox5.Location = new Point(26, 217);
-            textBox5.Margin = new Padding(4, 5, 4, 5);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(472, 31);
-            textBox5.TabIndex = 11;
             // 
             // QLLopHoc
             // 

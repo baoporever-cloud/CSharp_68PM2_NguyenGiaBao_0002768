@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using System.Data;
 
 namespace WinFormsApp1
@@ -125,9 +124,9 @@ namespace WinFormsApp1
         }
 
         private int GetTotalPages()
-            {
+        {
             return Math.Max(1, (int)Math.Ceiling(_totalRecords / (double)PageSize));
-            }
+        }
 
         private void UpdatePagingLabel()
         {
@@ -177,9 +176,7 @@ namespace WinFormsApp1
             try
             {
                 cmd.ExecuteNonQuery();
-
                 MessageBox.Show("Thêm lớp học thành công.");
-
                 ClearInput();
                 LoadLopHoc(_currentKeyword, GetTotalPages());
             }
@@ -195,7 +192,7 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Vui lòng chọn lớp học cần sửa trong danh sách bên phải.");
                 return;
-        }
+            }
 
             if (!ValidateInput()) return;
 
@@ -228,16 +225,16 @@ namespace WinFormsApp1
                     MessageBox.Show("Sửa lớp học thành công.");
                     ClearInput();
                     LoadLopHoc(_currentKeyword, _currentPage);
-            }
+                }
                 else
                 {
                     MessageBox.Show("Không tìm thấy lớp học cần sửa.");
-        }
+                }
             }
             catch (SqlException ex)
-        {
+            {
                 MessageBox.Show("Không sửa được lớp học.\nLỗi: " + ex.Message);
-        }
+            }
         }
 
         private void btn_delete_Click(object? sender, EventArgs e)
@@ -246,7 +243,7 @@ namespace WinFormsApp1
             {
                 MessageBox.Show("Vui lòng chọn lớp học cần xóa.");
                 return;
-        }
+            }
 
             string maLop = textBox5.Text.Trim();
             DialogResult confirm = MessageBox.Show(
@@ -274,7 +271,7 @@ namespace WinFormsApp1
                     MessageBox.Show("Xóa lớp học thành công.");
                     ClearInput();
                     LoadLopHoc(_currentKeyword, _currentPage);
-        }
+                }
                 else
                 {
                     MessageBox.Show("Không tìm thấy lớp học cần xóa.");
@@ -326,14 +323,14 @@ namespace WinFormsApp1
             {
                 e.SuppressKeyPress = true;
                 btn_search_Click(sender, e);
-        }
+            }
         }
 
         private void btn_viewSinhVien_Click(object? sender, EventArgs e)
         {
             string maLop = textBox5.Text.Trim();
             if (string.IsNullOrWhiteSpace(maLop))
-        {
+            {
                 MessageBox.Show("Vui lòng chọn lớp học cần xem danh sách sinh viên.");
                 return;
             }
@@ -374,7 +371,7 @@ namespace WinFormsApp1
             };
 
             Label lbl = new Label
-        {
+            {
                 Dock = DockStyle.Top,
                 Height = 40,
                 TextAlign = ContentAlignment.MiddleLeft,

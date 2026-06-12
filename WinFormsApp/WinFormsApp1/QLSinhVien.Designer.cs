@@ -74,7 +74,7 @@ namespace WinFormsApp1
             groupBox1.Controls.Add(txt_date);
             groupBox1.Controls.Add(txt_name);
             groupBox1.Controls.Add(txt_mssv);
-            groupBox1.Location = new Point(15, 120);
+            groupBox1.Location = new Point(24, 42);
             groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(4, 5, 4, 5);
@@ -188,7 +188,7 @@ namespace WinFormsApp1
             btn_add.FlatStyle = FlatStyle.Flat;
             btn_add.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_add.ForeColor = SystemColors.Control;
-            btn_add.Location = new Point(15, 850);
+            btn_add.Location = new Point(24, 765);
             btn_add.Margin = new Padding(4, 5, 4, 5);
             btn_add.Name = "btn_add";
             btn_add.Size = new Size(254, 75);
@@ -203,7 +203,7 @@ namespace WinFormsApp1
             btn_update.FlatStyle = FlatStyle.Flat;
             btn_update.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_update.ForeColor = SystemColors.Control;
-            btn_update.Location = new Point(299, 850);
+            btn_update.Location = new Point(308, 765);
             btn_update.Margin = new Padding(4, 5, 4, 5);
             btn_update.Name = "btn_update";
             btn_update.Size = new Size(255, 75);
@@ -217,7 +217,7 @@ namespace WinFormsApp1
             btn_refesh.FlatStyle = FlatStyle.Flat;
             btn_refesh.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_refesh.ForeColor = SystemColors.Control;
-            btn_refesh.Location = new Point(299, 953);
+            btn_refesh.Location = new Point(308, 868);
             btn_refesh.Margin = new Padding(4, 5, 4, 5);
             btn_refesh.Name = "btn_refesh";
             btn_refesh.Size = new Size(255, 75);
@@ -231,7 +231,7 @@ namespace WinFormsApp1
             btn_delete.FlatStyle = FlatStyle.Flat;
             btn_delete.Font = new Font("Microsoft Sans Serif", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_delete.ForeColor = SystemColors.Control;
-            btn_delete.Location = new Point(15, 953);
+            btn_delete.Location = new Point(24, 868);
             btn_delete.Margin = new Padding(4, 5, 4, 5);
             btn_delete.Name = "btn_delete";
             btn_delete.Size = new Size(254, 75);
@@ -243,7 +243,7 @@ namespace WinFormsApp1
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.Location = new Point(581, 120);
+            label6.Location = new Point(581, 51);
             label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
             label6.Size = new Size(254, 22);
@@ -257,7 +257,7 @@ namespace WinFormsApp1
             btn_search.FlatStyle = FlatStyle.Flat;
             btn_search.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btn_search.ForeColor = SystemColors.Control;
-            btn_search.Location = new Point(1059, 178);
+            btn_search.Location = new Point(1059, 109);
             btn_search.Margin = new Padding(4, 5, 4, 5);
             btn_search.Name = "btn_search";
             btn_search.Size = new Size(150, 66);
@@ -267,7 +267,7 @@ namespace WinFormsApp1
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(585, 178);
+            textBox3.Location = new Point(585, 109);
             textBox3.Margin = new Padding(4, 5, 4, 5);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(439, 31);
@@ -278,14 +278,14 @@ namespace WinFormsApp1
             dataGridView1.BackgroundColor = Color.White;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4, Column5 });
-            dataGridView1.Location = new Point(585, 273);
+            dataGridView1.Location = new Point(581, 185);
             dataGridView1.Margin = new Padding(4, 5, 4, 5);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RightToLeft = RightToLeft.No;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Size = new Size(929, 755);
+            dataGridView1.Size = new Size(929, 639);
             dataGridView1.TabIndex = 11;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
@@ -327,7 +327,7 @@ namespace WinFormsApp1
             // button1
             // 
             button1.FlatStyle = FlatStyle.Flat;
-            button1.Location = new Point(585, 1080);
+            button1.Location = new Point(638, 850);
             button1.Margin = new Padding(4, 5, 4, 5);
             button1.Name = "button1";
             button1.Size = new Size(110, 83);
@@ -338,7 +338,7 @@ namespace WinFormsApp1
             // button2
             // 
             button2.FlatStyle = FlatStyle.Flat;
-            button2.Location = new Point(720, 1080);
+            button2.Location = new Point(773, 850);
             button2.Margin = new Padding(4, 5, 4, 5);
             button2.Name = "button2";
             button2.Size = new Size(110, 83);
@@ -349,7 +349,7 @@ namespace WinFormsApp1
             // button3
             // 
             button3.FlatStyle = FlatStyle.Flat;
-            button3.Location = new Point(1165, 1080);
+            button3.Location = new Point(1218, 850);
             button3.Margin = new Padding(4, 5, 4, 5);
             button3.Name = "button3";
             button3.Size = new Size(110, 83);
@@ -360,7 +360,7 @@ namespace WinFormsApp1
             // button4
             // 
             button4.FlatStyle = FlatStyle.Flat;
-            button4.Location = new Point(1311, 1080);
+            button4.Location = new Point(1364, 850);
             button4.Margin = new Padding(4, 5, 4, 5);
             button4.Name = "button4";
             button4.Size = new Size(110, 83);
@@ -371,7 +371,7 @@ namespace WinFormsApp1
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(930, 1108);
+            label7.Location = new Point(983, 878);
             label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
             label7.Size = new Size(176, 25);
@@ -399,7 +399,7 @@ namespace WinFormsApp1
             Controls.Add(groupBox1);
             Margin = new Padding(4, 5, 4, 5);
             Name = "QLSinhVien";
-            Size = new Size(1599, 1050);
+            Size = new Size(1599, 1096);
             Load += QLSinhVien_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
