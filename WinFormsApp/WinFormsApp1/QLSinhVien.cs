@@ -194,20 +194,94 @@ namespace WinFormsApp1
             }
         }
 
-            while (reader.Read())
+        private void btn_delete_Click(object? sender, EventArgs e)
             {
-                DateTime ngaySinh = Convert.ToDateTime(reader["NgaySinh"]);
+            string maSV = !string.IsNullOrWhiteSpace(_selectedMaSV) ? _selectedMaSV : textBox1.Text.Trim();
 
-                dataGridView1.Rows.Add(
-                    reader["MaSV"].ToString(),
-                    reader["HoTen"].ToString(),
-                    reader["GioiTinh"].ToString(),
-                    ngaySinh.ToString("dd/MM/yyyy"),
-                    reader["MaLop"].ToString()
-                );
+            if (string.IsNullOrWhiteSpace(maSV))
+            {
+                MessageBox.Show("Vui lòng chọn sinh viên cần xóa.");
+                return;
             }
 
-            label7.Text = $"Tìm thấy: {dataGridView1.Rows.Count} sinh viên";
+            DialogResult confirm = MessageBox.Show(
+                $"Bạn có chắc muốn xóa sinh viên [{maSV}] không?",
+                "Xác nhận xóa",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+                );
+
+            if (confirm != DialogResult.Yes) return;
+
+            using SqlConnection conn = new SqlConnection(Db.ConnectionString);
+            conn.Open();
+
+            string sql = "DELETE FROM SinhVien WHERE MaSV = @MaSV";
+
+            using SqlCommand cmd = new SqlCommand(sql, conn);
+            cmd.Parameters.AddWithValue("@MaSV", maSV);
+
+            try
+            {
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    MessageBox.Show("Xóa sinh viên thành công.");
+                    ClearInput();
+                    LoadSinhVien(_currentKeyword, _currentPage);
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sinh viên cần xóa.");
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Không xóa được sinh viên.\nLỗi: " + ex.Message);
+            }
+        }
+
+        private void btn_refesh_Click(object sender, EventArgs e)
+        {
+            ClearInput();
+            LoadLopHoc();
+            _currentKeyword = string.Empty;
+            _currentPage = 1;
+            LoadSinhVien();
+        }
+
+        private void btn_search_Click(object? sender, EventArgs e)
+        {
+            _currentPage = 1;
+            LoadSinhVien(textBox3.Text.Trim(), _currentPage);
+        }
+
+        private void btn_first_Click(object? sender, EventArgs e)
+        {
+            LoadSinhVien(_currentKeyword, 1);
+        }
+
+        private void btn_previous_Click(object? sender, EventArgs e)
+        {
+            LoadSinhVien(_currentKeyword, _currentPage - 1);
+        }
+
+        private void btn_next_Click(object? sender, EventArgs e)
+        {
+            LoadSinhVien(_currentKeyword, _currentPage + 1);
+        }
+
+        private void btn_last_Click(object? sender, EventArgs e)
+        {
+            LoadSinhVien(_currentKeyword, GetTotalPages());
+            }
+
+        private void textBox3_KeyDown(object? sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                e.SuppressKeyPress = true;
+                btn_search_Click(sender, e);
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -228,11 +302,14 @@ namespace WinFormsApp1
 
             if (row.IsNewRow) return;
 
-            textBox1.Text = row.Cells[0].Value?.ToString();
+            _selectedMaSV = row.Cells[0].Value?.ToString() ?? string.Empty;
+            textBox1.Text = _selectedMaSV;
             textBox2.Text = row.Cells[1].Value?.ToString();
             comboBox1.Text = row.Cells[2].Value?.ToString();
 
-            if (DateTime.TryParse(row.Cells[3].Value?.ToString(), out DateTime ngaySinh))
+            string ngaySinhText = row.Cells[3].Value?.ToString() ?? string.Empty;
+            if (DateTime.TryParseExact(ngaySinhText, "dd/MM/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime ngaySinh)
+                || DateTime.TryParse(ngaySinhText, out ngaySinh))
             {
                 dateTimePicker1.Value = ngaySinh;
             }
@@ -242,6 +319,7 @@ namespace WinFormsApp1
 
         private void ClearInput()
         {
+            _selectedMaSV = string.Empty;
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
