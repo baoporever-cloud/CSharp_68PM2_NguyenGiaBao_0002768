@@ -9,6 +9,28 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
+        private void WireEvents()
+        {
+            btn_update.Click += btn_update_Click;
+            btn_delete.Click += btn_delete_Click;
+            btn_search.Click += btn_search_Click;
+            button1.Click += btn_first_Click;
+            button2.Click += btn_previous_Click;
+            button3.Click += btn_next_Click;
+            button4.Click += btn_last_Click;
+            dataGridView1.CellClick += dataGridView1_CellClick;
+            textBox3.KeyDown += textBox3_KeyDown;
+        }
+
+        private void SetupGrid()
+        {
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
         private void QLSinhVien_Load(object sender, EventArgs e)
         {
             LoadLopHoc();
@@ -204,6 +226,7 @@ namespace WinFormsApp1
             }
 
             dateTimePicker1.Value = DateTime.Now;
+            dataGridView1.ClearSelection();
             textBox1.Focus();
         }
 
