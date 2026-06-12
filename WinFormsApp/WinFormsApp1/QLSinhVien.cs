@@ -136,35 +136,63 @@ namespace WinFormsApp1
             }
         }
 
-        private void btn_refesh_Click(object sender, EventArgs e)
+        private void btn_update_Click(object? sender, EventArgs e)
         {
-            ClearInput();
-            LoadLopHoc();
-            LoadSinhVien();
+            if (string.IsNullOrWhiteSpace(_selectedMaSV))
+            {
+                MessageBox.Show("Vui lòng chọn sinh viên cần sửa trong danh sách bên phải.");
+                return;
         }
 
-        private void btn_search_Click(object sender, EventArgs e)
-        {
-            string keyword = textBox3.Text.Trim();
+            if (!ValidateInput()) return;
 
-            dataGridView1.Rows.Clear();
+            string maSVMoi = textBox1.Text.Trim();
+            string hoTen = textBox2.Text.Trim();
+            string gioiTinh = comboBox1.Text.Trim();
+            DateTime ngaySinh = dateTimePicker1.Value.Date;
+            string maLop = comboBox2.Text.Trim();
 
             using SqlConnection conn = new SqlConnection(Db.ConnectionString);
             conn.Open();
 
             string sql = @"
-                SELECT MaSV, HoTen, GioiTinh, NgaySinh, MaLop
-                FROM SinhVien
-                WHERE MaSV LIKE @Keyword
-                   OR HoTen LIKE @Keyword
-                   OR MaLop LIKE @Keyword
-                ORDER BY MaSV
+                UPDATE SinhVien
+                SET MaSV = @MaSVMoi,
+                    HoTen = @HoTen,
+                    GioiTinh = @GioiTinh,
+                    NgaySinh = @NgaySinh,
+                    MaLop = @MaLop
+                WHERE MaSV = @MaSVCu
             ";
 
             using SqlCommand cmd = new SqlCommand(sql, conn);
-            cmd.Parameters.AddWithValue("@Keyword", "%" + keyword + "%");
+            cmd.Parameters.AddWithValue("@MaSVMoi", maSVMoi);
+            cmd.Parameters.AddWithValue("@HoTen", hoTen);
+            cmd.Parameters.AddWithValue("@GioiTinh", gioiTinh);
+            cmd.Parameters.AddWithValue("@NgaySinh", ngaySinh);
+            cmd.Parameters.AddWithValue("@MaLop", maLop);
+            cmd.Parameters.AddWithValue("@MaSVCu", _selectedMaSV);
 
-            using SqlDataReader reader = cmd.ExecuteReader();
+            try
+            {
+                int rows = cmd.ExecuteNonQuery();
+                if (rows > 0)
+                {
+                    MessageBox.Show("Sửa sinh viên thành công.");
+                    _selectedMaSV = maSVMoi;
+                    ClearInput();
+                    LoadSinhVien(_currentKeyword, _currentPage);
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy sinh viên cần sửa.");
+                }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Không sửa được sinh viên.\nLỗi: " + ex.Message);
+            }
+        }
 
             while (reader.Read())
             {
@@ -250,9 +278,13 @@ namespace WinFormsApp1
 
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+        private void groupBox1_Enter(object sender, EventArgs e) { }
+        private void label6_Click(object sender, EventArgs e) { }
+        private void button3_Click(object sender, EventArgs e) { }
+        private void label7_Click(object sender, EventArgs e) { }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void qLSVToolStripMenuItem_Click(object sender, EventArgs e) { }
+        private void qLLHToolStripMenuItem_Click(object sender, EventArgs e) { }
         }
 
         private void qLSVToolStripMenuItem_Click(object sender, EventArgs e)
