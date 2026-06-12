@@ -173,28 +173,98 @@ namespace WinFormsApp1
 
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        private void btn_viewSinhVien_Click(object? sender, EventArgs e)
         {
+            string maLop = textBox5.Text.Trim();
+            if (string.IsNullOrWhiteSpace(maLop))
+        {
+                MessageBox.Show("Vui lòng chọn lớp học cần xem danh sách sinh viên.");
+                return;
+            }
 
+            using SqlConnection conn = new SqlConnection(Db.ConnectionString);
+            conn.Open();
+
+            string sql = @"
+                SELECT MaSV AS [Mã SV],
+                       HoTen AS [Họ tên],
+                       GioiTinh AS [Giới tính],
+                       NgaySinh AS [Ngày sinh],
+                       MaLop AS [Mã lớp]
+                FROM SinhVien
+                WHERE MaLop = @MaLop
+                ORDER BY MaSV
+            ";
+
+            using SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+            adapter.SelectCommand.Parameters.AddWithValue("@MaLop", maLop);
+
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+
+            using Form frm = new Form();
+            frm.Text = $"Danh sách sinh viên lớp {maLop}";
+            frm.StartPosition = FormStartPosition.CenterParent;
+            frm.Size = new Size(850, 500);
+
+            DataGridView dgv = new DataGridView
+            {
+                Dock = DockStyle.Fill,
+                DataSource = table,
+                ReadOnly = true,
+                AllowUserToAddRows = false,
+                AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
+                SelectionMode = DataGridViewSelectionMode.FullRowSelect
+            };
+
+            Label lbl = new Label
+        {
+                Dock = DockStyle.Top,
+                Height = 40,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Text = $"  Lớp {maLop}: {table.Rows.Count} sinh viên"
+            };
+
+            frm.Controls.Add(dgv);
+            frm.Controls.Add(lbl);
+            frm.ShowDialog(this);
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            FillInputFromGrid(e.RowIndex);
         }
 
-        private void qLSVToolStripMenuItem_Click(object sender, EventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            FillInputFromGrid(e.RowIndex);
         }
 
-        private void qLLHToolStripMenuItem_Click(object sender, EventArgs e)
+        private void FillInputFromGrid(int rowIndex)
         {
+            if (rowIndex < 0) return;
 
+            DataGridViewRow row = dataGridView1.Rows[rowIndex];
+            if (row.IsNewRow) return;
+
+            int.TryParse(row.Cells[0].Value?.ToString(), out _selectedId);
+            textBox1.Text = row.Cells[0].Value?.ToString();
+            textBox5.Text = row.Cells[1].Value?.ToString();
+            textBox2.Text = row.Cells[2].Value?.ToString();
+            textBox3.Text = row.Cells[3].Value?.ToString();
         }
 
-        private void txt_date_Click(object sender, EventArgs e)
+        private void ClearInput()
         {
+            _selectedId = 0;
+            textBox1.Clear();
+            textBox5.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            dataGridView1.ClearSelection();
+            textBox5.Focus();
+        }
 
         }
     }
